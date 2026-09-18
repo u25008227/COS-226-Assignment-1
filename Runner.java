@@ -64,6 +64,19 @@ public class Runner
     /*Optional Helper: Records and reports the results of the experiment.*/
     public void reportResults(long executionTime) 
     {
+         long totalOps = (long) numberOfThreads * iterations;
+
+        System.out.println("Threads:            " + numberOfThreads);
+
+        System.out.println("Iterations/thread:  " + iterations);
+
+        System.out.println("Total bids:         " + totalOps);
+
+        System.out.println("Execution time:     " + executionTime + " ns");
+
+        System.out.println("Highest bid:        " + auction.getHighestBid());
+        
+        System.out.println("Highest bidder:     " + auction.getHighestBidder());
 
     }
 }

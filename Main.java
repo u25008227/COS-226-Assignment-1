@@ -6,9 +6,20 @@ public class Main
         int numberOfThreads = 0; /*Change*/
         int iterations = 200;
 
-        Auction auction =new Auction(AuctionUtils.generateItemName());
-        Lock lock = new Lock(); /*Add your lock here*/
-        Runner runner = new Runner(numberOfThreads,iterations,auction,lock);
-        runner.run();
+        System.out.println("=== TTAS Lock ===");
+
+        new Runner(numberOfThreads, iterations, new Auction(AuctionUtils.generateItemName()), new TTASLock()).run();
+
+        System.out.println();
+
+        System.out.println("=== CLH Lock ===");
+
+        new Runner(numberOfThreads, iterations, new Auction(AuctionUtils.generateItemName()), new CLHLock()).run();
+
+        System.out.println();
+
+        System.out.println("=== MCS Lock ===");
+
+        new Runner(numberOfThreads, iterations, new Auction(AuctionUtils.generateItemName()), new MCSLock()).run();
     }
 }
